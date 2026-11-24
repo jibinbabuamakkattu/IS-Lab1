@@ -27,7 +27,7 @@ Learn to implement and train a simple linear classifier (Single Perceptron) and 
 Solve the classification task using a **Gaussian Naive Bayes Classifier** and evaluate performance on unseen test images.
 
 ## Results
-* **Training Convergence:** The Perceptron converges to 0 errors across all training samples.
+
 * **Perceptron Test Accuracy:** 100.00% on the 8 unused test images.
 * **Naive Bayes Test Accuracy:** 87.50% on the 8 unused test images.
 
