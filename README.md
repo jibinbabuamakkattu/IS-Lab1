@@ -1,37 +1,35 @@
-# IS-Lab1 (EN)
-Intelligent systems. Task for the laboratory for Perceptron training.
-# Aim
-Learn to write training (parameter estimation) algorithm for simple linear classifier.
-# Tasks (maximum 8 points)
-1. Create a program for classification using single Perceptron of two different objects into two classes according to two estimated features. Output estimation should be done acording to the following equation:
-y = 1, if x1\*w1 + x2\*w2 + b > 0; y = -1, if x1\*w1 + x2\*w2 + b <= 0; here w1, w2 and b are the parameters, which should be initialized randomly and updated (estimated) later, using training algorithm; x1 and x2 are the object features, estimated using functions written in Matlab (available in Matlab code template or in Data.txt).
-2. Write a training algorithm for created classifier. Use this parameter update formula:
-w1(n+1) = w1(n) + eta\*e(n)\*x1(n); here 0 < eta < 1; e(n) = d(n) - y(n); - an error, estimated by comparing the desired output d(n) and the output, currently (for current example) received from the Perceptron.
-w2(n+1) = w2(n) + eta\*e(n)\*x2(n);
-b(n+1) = b(n) + eta\*e(n);
-# Additional task (2 additional points)
-Solve this classification task using Naive Bayes Classifier.
-Some examples and tutorials for additional task:
-- http://www.statsoft.com/textbook/naive-bayes-classifier
-- https://en.wikipedia.org/wiki/Naive_Bayes_classifier
-# Suggested reading
-- Neural Networks and Learning Machines (3rd Edition), page 54, Table 1.1. 
+# IS-Lab1: Perceptron Training & Naive Bayes Classifier
 
-# IS-Lab1 (LT)
-Intelektualiosios sistemos. Pirmojo laboratorinio darbo užduotis.
-# Tikslas
-Išmokti savarankiškai suprogramuoti paprasto tiesinio klasifikatoriaus mokymo (parametrų skaičiavimo) algoritmą.
-# Užduotys (maks. 8 balai)
-1. Sukurkite paprasto klasifikatoriaus (Perceptrono) išėjimui apskaičiuoti skirtą programą. Klasifikatorius turi skirstyti objektus į dvi klases, pagal du požymius. Išėjimo skaičiavimas atliekamas pagal formulę:
-y = 1, kai x1\*w1 + x2\*w2 + b > 0; y = -1, kai x1\*w1 + x2\*w2 + b <= 0; čia w1, w2 ir b parametrai, kurie turi būti sugeneruojami naudojant atsitiktinių skaičių generatorių (MATLAB pvz.: w1 = randn(1);) pirmąją programos veikimo iteraciją ir vėliau atnaujinami mokymo algoritmu; x1 ir x2 yra objektų požymiai, apskaičiuoti Matlab funkcijomis, esančiomis paruoštame kodo ruošinyje arba Data.txt faile (kiekvienoje eilutėje yra toks duomenų formatas: *požymis1, požymis2, norimas_atsakymas*), jei ketinate naudoti ne Matlab.
-2. Parašykite mokymo algoritmą sukurto klasifikatoriaus parametrams apskaičiuoti. Naudokite šią parametrų atnaujinimo formulę:
-w1(n+1) = w1(n) + eta\*e(n)\*x1(n); čia 0 < eta < 1; e(n) = d(n) - y(n); - klaida (momentinė klaida), apskaičiuota palyginus norimą atsakymą su tuo, kuris gautas klasifikatoriaus išėjime.
-w2(n+1) = w2(n) + eta\*e(n)\*x2(n);
-b(n+1) = b(n) + eta\*e(n);
-# Papildoma užduotis (papildomi 2 balai)
-Išspręskite šį klasifikavimo uždavinį naudodami Naive Bayes Classifier.
-Kelios nuorodos į paprastai pateiktus šio tipo klasifikatoriaus taikymo pavyzdžius:
-- http://www.statsoft.com/textbook/naive-bayes-classifier
-- https://en.wikipedia.org/wiki/Naive_Bayes_classifier
-# Rekomenduojama literatūra
-- Neural Networks and Learning Machines (3rd Edition), 54 psl., 1.1 lentelė
+Intelligent Systems. Laboratory Work No. 1.
+
+## Aim
+Learn to implement and train a simple linear classifier (Single Perceptron) and compare it with a probabilistic classifier (Naive Bayes).
+
+## Tasks (8 Points)
+1. **Perceptron Implementation:**
+   Create a program for binary classification using a single Perceptron to distinguish between two objects (Apples and Pears) based on two estimated features:
+   * $x_1$: Color (average hue in HSV color space)
+   * $x_2$: Roundness metric ($\frac{4 \pi \cdot \text{Area}}{\text{Perimeter}^2}$)
+
+   The output calculation is performed using the signum/threshold activation function:
+   $$y = \begin{cases} +1, & \text{if } x_1 w_1 + x_2 w_2 + b > 0 \quad (\text{Apple}) \\ -1, & \text{if } x_1 w_1 + x_2 w_2 + b \le 0 \quad (\text{Pear}) \end{cases}$$
+
+2. **Training Algorithm (Delta Rule):**
+   Implement the parameter update equations:
+   $$w_1(n+1) = w_1(n) + \eta \cdot e(n) \cdot x_1(n)$$
+   $$w_2(n+1) = w_2(n) + \eta \cdot e(n) \cdot x_2(n)$$
+   $$b(n+1) = b(n) + \eta \cdot e(n)$$
+   where:
+   * $0 < \eta < 1$ is the learning rate ($\eta = 0.3$).
+   * $e(n) = T(n) - y(n)$ is the error between target $T(n)$ and output $y(n)$.
+
+## Additional Task (+2 Points)
+Solve the classification task using a **Gaussian Naive Bayes Classifier** and evaluate performance on unseen test images.
+
+## Results
+* **Training Convergence:** The Perceptron converges to 0 errors across all training samples.
+* **Perceptron Test Accuracy:** 100.00% on the 8 unused test images.
+* **Naive Bayes Test Accuracy:** 87.50% on the 8 unused test images.
+
+## Suggested Reading
+* *Neural Networks and Learning Machines (3rd Edition)*, Simon Haykin, page 54, Table 1.1.
